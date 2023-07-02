@@ -1,5 +1,5 @@
 import browser from "webextension-polyfill"
-import cookieRules from "./public/cookie-banner-rules-list.json"
+import cookieRules from "../public/cookie-banner-rules-list.json"
 import { getHostname, updateRules } from "./utils"
 
 const defaultOptions = {
@@ -49,7 +49,7 @@ function messageHandler(request, sender, sendResponse) {
 let rules = cookieRules.data
 
 ;(async () => {
-	const { rules: newRules } = browser.storage.local.get("rules")
+	const { rules: newRules } = await browser.storage.local.get("rules")
 	if (newRules) rules = newRules
 })()
 
