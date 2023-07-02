@@ -1,0 +1,176 @@
+:root {
+	--color-red: rgb(255, 49, 58);
+	--color-green: rgb(52, 199, 89);
+	--color-primary: rgb(0, 122, 255);
+	--color-box: white;
+	--color-bg: rgb(242, 242, 247);
+	--color-sep: rgb(209, 209, 214);
+	--color-text: rgb(28, 28, 30);
+	--color-text-secondary: rgb(142, 142, 147);
+	--gap: 10px;
+	--toggle-h: 1.5em;
+	--toggle-w: 3em;
+	--border-radius: 12px;
+	--font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+		"Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", Arial, sans-serif;
+	--font-mono-stack: ui-monospace, Menlo, Monaco, "Cascadia Mono",
+		"Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
+		"Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New",
+		monospace;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	width: max-content;
+	height: auto;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	padding: var(--gap);
+	gap: var(--gap);
+	align-items: flex-start;
+	justify-content: start;
+	background-color: var(--color-bg);
+	color: var(--color-text);
+	font-size: 1rem;
+	font-family: var(--font-stack);
+}
+
+h1,
+p {
+	margin: 0;
+}
+
+h1 {
+	font-size: 1.5em;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+}
+
+.box {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+	background-color: var(--color-box);
+	padding: var(--gap);
+	border-radius: var(--border-radius);
+	box-shadow: 0px 2px 5px var(--color-sep);
+}
+
+.box-item {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: var(--gap);
+	max-width: min-content;
+	min-width: 100%;
+}
+
+.box-item span {
+	inline-size: max-content;
+}
+
+.box-item code {
+	font-family: var(--font-mono-stack);
+	color: var(--color-text-secondary);
+	overflow-wrap: anywhere;
+	word-break: break-all;
+}
+
+.box > *:not(:first-child) {
+	border-top: 1px solid var(--color-sep);
+	padding-top: var(--gap);
+}
+
+.button {
+	width: 100%;
+	display: block;
+	padding: var(--gap);
+	margin: 0;
+	border-radius: var(--border-radius);
+	background-color: var(--color-box);
+	color: var(--color-text);
+	font-size: 1em;
+	border: none;
+}
+
+.button-primary {
+	background-color: var(--color-primary);
+	color: var(--color-box);
+}
+
+/* Toggle */
+.form-switch {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--gap);
+	justify-content: space-between;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+.form-switch i {
+	position: relative;
+	display: inline-block;
+	width: 46px;
+	height: 26px;
+	background-color: var(--color-sep);
+	border-radius: 23px;
+	vertical-align: text-bottom;
+	transition: all 0.3s linear;
+}
+.form-switch i::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	width: 42px;
+	height: 22px;
+	background-color: var(--color-sep);
+	border-radius: 11px;
+	transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+	transition: all 0.25s linear;
+}
+.form-switch i::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	width: 22px;
+	height: 22px;
+	background-color: var(--color-box);
+	border-radius: 11px;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
+	transform: translate3d(2px, 2px, 0);
+	transition: all 0.2s ease-in-out;
+}
+.form-switch:active i::after {
+	width: 28px;
+	transform: translate3d(2px, 2px, 0);
+}
+.form-switch:active input:checked + i::after {
+	transform: translate3d(16px, 2px, 0);
+}
+.form-switch input {
+	display: none;
+}
+.form-switch input:checked + i {
+	background-color: var(--color-green);
+}
+.form-switch input:checked + i::before {
+	transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+}
+.form-switch input:checked + i::after {
+	transform: translate3d(22px, 2px, 0);
+}
