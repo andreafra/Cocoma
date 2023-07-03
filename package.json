@@ -8,13 +8,15 @@
 		"build": "vite build"
 	},
 	"devDependencies": {
-		"@sveltejs/vite-plugin-svelte": "^2.0.3",
-		"svelte": "^3.55.1",
-		"vite": "^4.1.4",
-		"vite-plugin-web-extension": "^3.0.1",
+		"@sveltejs/vite-plugin-svelte": "^2.4.2",
+		"svelte": "^4.0.1",
+		"vite": "^4.3.9",
+		"vite-plugin-web-extension": "^3.1.0",
 		"webextension-polyfill": "^0.10.0"
 	},
 	"dependencies": {
+		"@steeze-ui/heroicons": "^2.2.3",
+		"@steeze-ui/svelte-icon": "^1.5.0",
 		"js-cookie": "^3.0.5"
 	}
 }

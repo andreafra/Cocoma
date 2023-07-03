@@ -96,9 +96,21 @@ form {
 	padding-top: var(--gap);
 }
 
+.caption {
+	color: var(--color-text-secondary);
+	width: 100%;
+	text-align: center;
+	font-size: 0.8em;
+}
+
+.caption a {
+	color: var(--color-text-secondary);
+	font-weight: bold;
+}
+
 .button {
 	width: 100%;
-	display: block;
+	display: flex;
 	padding: var(--gap);
 	margin: 0;
 	border-radius: var(--border-radius);
@@ -106,11 +118,39 @@ form {
 	color: var(--color-text);
 	font-size: 1em;
 	border: none;
+	align-items: center;
+	justify-content: center;
+	gap: var(--gap);
+}
+
+.button:hover {
+	opacity: 0.9;
+}
+
+.button:active {
+	margin-top: 2px;
+}
+
+.button span {
+	display: inherit;
 }
 
 .button-primary {
 	background-color: var(--color-primary);
 	color: var(--color-box);
+}
+
+.spin {
+	animation: 1s linear 1s infinite spin;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 /* Toggle */

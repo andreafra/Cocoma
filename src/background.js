@@ -36,10 +36,7 @@ function messageHandler(request, sender, sendResponse) {
 				sendResponse(rules)
 			case "get_consent":
 				const consentPrefs = await getConsentPrefs(url)
-				await sendResponse(consentPrefs)
-			case "update_rules":
-				console.log("Updating rules...")
-				await updateRules()
+				sendResponse(consentPrefs)
 			default:
 		}
 	})()
