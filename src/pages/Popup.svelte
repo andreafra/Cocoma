@@ -1,6 +1,6 @@
 <script lang="ts">
 	import browser from "webextension-polyfill"
-	import { getHostname, updateRules } from "../utils"
+	import { getCurrentTab, getHostname, updateRules } from "../utils"
 	import { onMount } from "svelte"
 
 	import { Icon } from "@steeze-ui/svelte-icon"
@@ -42,6 +42,13 @@
 		lastRuleUpdateDate = await updateRules()
 		options.lastRuleUpdateDate = lastRuleUpdateDate
 		browser.storage.sync.set({ options })
+	}
+
+	const handleStartPickChoice = async (event) => {
+		const { customRules } = await browser.storage.local.get("customRules")
+		customRules.isPickingChoice = true
+		customRules.count = customRules.count + 1 || 0
+		browser.storage.local.set({ customRules })
 	}
 
 	onMount(async () => {
@@ -125,6 +132,14 @@
 	on:click={handleUpdateRules}
 >
 	Update rules
+</button>
+<p class="caption">Not working? Try selecting the button manually.</p>
+<button
+	id="pick-elem"
+	class="button button-warning"
+	on:click={handleStartPickChoice}
+>
+	Select Choice
 </button>
 <p class="caption">
 	{#await lastRuleUpdateDate}

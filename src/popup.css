@@ -2,11 +2,13 @@
 	--color-red: rgb(255, 49, 58);
 	--color-green: rgb(52, 199, 89);
 	--color-primary: rgb(0, 122, 255);
+	--color-warning: rgb(255, 149, 0);
 	--color-box: white;
 	--color-bg: rgb(242, 242, 247);
 	--color-sep: rgb(209, 209, 214);
 	--color-text: rgb(28, 28, 30);
 	--color-text-secondary: rgb(142, 142, 147);
+	--box-shadow: 0px 2px 5px var(--color-sep);
 	--gap: 10px;
 	--toggle-h: 1.5em;
 	--toggle-w: 3em;
@@ -68,7 +70,7 @@ form {
 	background-color: var(--color-box);
 	padding: var(--gap);
 	border-radius: var(--border-radius);
-	box-shadow: 0px 2px 5px var(--color-sep);
+	box-shadow: var(--box-shadow);
 }
 
 .box-item {
@@ -86,6 +88,7 @@ form {
 
 .box-item code {
 	font-family: var(--font-mono-stack);
+	font-size: 0.95em;
 	color: var(--color-text-secondary);
 	overflow-wrap: anywhere;
 	word-break: break-all;
@@ -101,11 +104,15 @@ form {
 	width: 100%;
 	text-align: center;
 	font-size: 0.8em;
+	max-width: min-content;
+	min-width: 100%;
+	overflow-wrap: break-word;
 }
 
 .caption a {
 	color: var(--color-text-secondary);
 	font-weight: bold;
+	width: min-content;
 }
 
 .button {
@@ -121,6 +128,7 @@ form {
 	align-items: center;
 	justify-content: center;
 	gap: var(--gap);
+	box-shadow: var(--box-shadow);
 }
 
 .button:hover {
@@ -137,6 +145,10 @@ form {
 
 .button-primary {
 	background-color: var(--color-primary);
+	color: var(--color-box);
+}
+.button-warning {
+	background-color: var(--color-warning);
 	color: var(--color-box);
 }
 

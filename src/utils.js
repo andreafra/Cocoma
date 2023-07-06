@@ -1,11 +1,17 @@
 import browser from "webextension-polyfill"
 
-export async function getHostname() {
+export async function getCurrentTab() {
 	const currentWindow = await browser.windows.getCurrent()
 	const [tab] = await browser.tabs.query({
 		active: true,
 		windowId: currentWindow.id,
 	})
+
+	return tab
+}
+
+export async function getHostname() {
+	const tab = await getCurrentTab()
 
 	const url = new URL(tab.url)
 	return url.hostname

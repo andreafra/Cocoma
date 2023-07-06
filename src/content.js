@@ -1,6 +1,5 @@
 import browser from "webextension-polyfill"
 import Cookies from "js-cookie"
-;(async () => main())()
 
 async function main() {
 	// On page load, send the current URL to the background worker and
@@ -73,10 +72,10 @@ async function handleCookieConsent(rules) {
 	console.log(`Applying consent (${consent})...`)
 	for (const rule of rules) {
 		console.log(`Rule ID: ${rule.id}`)
-		if (rule.click) {
+		if (allowClick && rule.click) {
 			clickConsentButton(rule, consent)
 			console.log(`Clicked consent button: optIn=${consent}`)
-		} else if (rule.cookies) {
+		} else if (allowCookieInjection && rule.cookies) {
 			setConsentCookies(rule, consent)
 			console.log(`Set consent cookie: optIn=${consent}`)
 		} else {
@@ -111,3 +110,31 @@ async function handleCookieConsent(rules) {
 		}
 	}
 }
+
+browser.storage.local.onChanged.addListener(async (change) => {
+	console.log("HELLO!")
+	const { customRules } = await browser.storage.local.get("customRules")
+	console.log(customRules)
+	if (customRules.isPickingChoice) {
+		console.log("Entering picking mode...")
+		document.body.addEventListener("click", handlePickChoice)
+	}
+})
+
+function handlePickChoice(event) {
+	// prevent default action
+	event.preventDefault()
+	const target = event.target
+	let container = target
+	// navigate the dom to find the top-level container
+	for (
+		;
+		container.parentNode != document.body;
+		container = container.parentNode
+	) {}
+	console.log(target)
+	console.log(container)
+	// remove the listener
+	document.body.removeEventListener("click", handlePickChoice)
+}
+;(async () => main())()

@@ -9,6 +9,11 @@ const defaultOptions = {
 	allowCookieInjection: true,
 }
 
+const defaultCustomRules = {
+	isPickingChoice: false,
+	websites: {},
+}
+
 browser.runtime.onInstalled.addListener(async (details) => {
 	console.log("Extension installed:", details)
 
@@ -17,6 +22,8 @@ browser.runtime.onInstalled.addListener(async (details) => {
 		console.log("Initializing default settings")
 		browser.storage.sync.set({ options: defaultOptions })
 	}
+	console.log("Initializing default local rules")
+	browser.storage.local.set({ customRules: defaultCustomRules })
 })
 
 // On install, fetch the newest cookie rules from Mozilla's repository
@@ -38,6 +45,7 @@ function messageHandler(request, sender, sendResponse) {
 				const consentPrefs = await getConsentPrefs(url)
 				sendResponse(consentPrefs)
 			default:
+				console.log("Unsupported message: ", request)
 		}
 	})()
 	return true // needed for async sendResponse, else it returns undefined
@@ -45,6 +53,7 @@ function messageHandler(request, sender, sendResponse) {
 
 let rules = cookieRules.data
 
+// Fetch the local, updated rules, if any
 ;(async () => {
 	const { rules: newRules } = await browser.storage.local.get("rules")
 	if (newRules) rules = newRules
