@@ -10,10 +10,11 @@ async function main() {
 			url: window.location.hostname,
 		},
 	})
-	console.log("Rules:", rules)
-	console.log(`Found matching cookie rules in ${elapsedTime} ms`)
+	console.log("Matching rules found:", rules)
 	if (!checkForExistingCookies(rules)) {
 		startCookieManager(rules)
+	} else {
+		console.log(`Found matching cookie rules in ${elapsedTime} ms`)
 	}
 }
 
@@ -40,10 +41,12 @@ function startCookieManager(rules) {
 		if (_rules.length > 0) {
 			clearInterval(loop)
 			handleCookieConsent(_rules)
+			return
 		}
 		if (currentTry >= maxTries) {
 			clearInterval(loop)
 			console.warn("Failed to get presences.")
+			return
 		}
 		currentTry++
 	}, 500)
@@ -56,7 +59,9 @@ function startCookieManager(rules) {
  */
 function filterRulesByPresences(rules) {
 	return rules.reduce((acc, rule) => {
-		const presence = document.querySelector(rule.click.presence)
+		const presence =
+			document.querySelector(rule.click.presence) ??
+			document.querySelector(rule.click.optIn)
 		if (presence) acc.push(rule)
 		return acc
 	}, [])
@@ -71,7 +76,7 @@ async function handleCookieConsent(rules) {
 	const consent = websiteConsent ?? defaultConsent
 	console.log(`Applying consent (${consent})...`)
 	for (const rule of rules) {
-		console.log(`Rule ID: ${rule.id}`)
+		console.log(`Using rule id=${rule.id}`)
 		if (allowClick && rule.click) {
 			clickConsentButton(rule, consent)
 			console.log(`Clicked consent button: optIn=${consent}`)
@@ -87,13 +92,12 @@ async function handleCookieConsent(rules) {
 
 	function clickConsentButton(rule, consent) {
 		console.log("Trying to click the consent button.")
-		const consentButton = document.querySelector(
-			rule.click[consent ? "optIn" : "optOut"]
-		)
+		const consentChoice = consent ? "optIn" : "optOut"
+		const consentButton = document.querySelector(rule.click[consentChoice])
 		if (consentButton) {
 			consentButton.click()
 		} else {
-			console.error("Failed to select optIn/optOut button")
+			console.error(`Failed to click ${consentChoice} button.`)
 		}
 	}
 
@@ -112,12 +116,10 @@ async function handleCookieConsent(rules) {
 }
 
 browser.storage.local.onChanged.addListener(async (change) => {
-	console.log("HELLO!")
 	const { customRules } = await browser.storage.local.get("customRules")
-	console.log(customRules)
 	if (customRules.isPickingChoice) {
 		console.log("Entering picking mode...")
-		document.body.addEventListener("click", handlePickChoice)
+		document.addEventListener("click", handlePickChoice, false)
 	}
 })
 
@@ -135,6 +137,6 @@ function handlePickChoice(event) {
 	console.log(target)
 	console.log(container)
 	// remove the listener
-	document.body.removeEventListener("click", handlePickChoice)
+	document.removeEventListener("click", handlePickChoice)
 }
 ;(async () => main())()

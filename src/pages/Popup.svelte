@@ -1,6 +1,6 @@
 <script lang="ts">
 	import browser from "webextension-polyfill"
-	import { getCurrentTab, getHostname, updateRules } from "../utils"
+	import { getHostname, updateRules } from "../utils"
 	import { onMount } from "svelte"
 
 	import { Icon } from "@steeze-ui/svelte-icon"
@@ -51,6 +51,11 @@
 		browser.storage.local.set({ customRules })
 	}
 
+	const handleClearBrowsingData = async (event) => {
+		await browser.runtime.sendMessage({ type: "clear_data" })
+		browser.tabs.reload()
+	}
+
 	onMount(async () => {
 		const { options } = await browser.storage.sync.get("options")
 		const hostname = await getHostname()
@@ -73,7 +78,10 @@
 		"https://andreafra.notion.site/Cookie-Consent-Manager-7f7be95ee2c340e29b1b8c4d4e8e4d7c?pvs=4"
 </script>
 
-<h1>Cookie Consent 🍪</h1>
+<header>
+	<img class="icon" src="/icon.svg" alt="logo" />
+	<h1>Cookie Consent<br />Manager</h1>
+</header>
 <div class="box">
 	<div class="box-item">
 		<span>Current website:</span>
@@ -126,6 +134,13 @@
 		</label>
 	</div>
 </form>
+<p class="caption">Reload the page after apply the new settings.</p>
+
+<button
+	id="clear-data"
+	class="button button-danger"
+	on:click={handleClearBrowsingData}>Clear cookies and reload</button
+>
 <button
 	id="update-rules"
 	class="button button-primary"
@@ -139,7 +154,7 @@
 	class="button button-warning"
 	on:click={handleStartPickChoice}
 >
-	Select Choice
+	Select choice
 </button>
 <p class="caption">
 	{#await lastRuleUpdateDate}

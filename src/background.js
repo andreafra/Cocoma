@@ -35,7 +35,6 @@ browser.runtime.onMessage.addListener(messageHandler)
 function messageHandler(request, sender, sendResponse) {
 	;(async () => {
 		const url = await getHostname()
-
 		switch (request.type) {
 			case "get_rules":
 				const rules = getCookieData(url)
@@ -44,6 +43,16 @@ function messageHandler(request, sender, sendResponse) {
 			case "get_consent":
 				const consentPrefs = await getConsentPrefs(url)
 				sendResponse(consentPrefs)
+			case "clear_data":
+				console.log("Clearing browsing data and reloading...")
+				const cookies = await browser.cookies.getAll({})
+				for (const cookie of cookies) {
+					await browser.cookies.remove({
+						url: `https://${cookie.domain}`,
+						name: cookie.name,
+					})
+				}
+				sendResponse()
 			default:
 				console.log("Unsupported message: ", request)
 		}

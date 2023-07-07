@@ -5,14 +5,19 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build"
+		"watch": "vite build --watch --mode development",
+		"build": "vite build",
+		"build:chrome": "TARGET=chrome vite build",
+		"build:firefox": "TARGET=firefox vite build"
 	},
 	"devDependencies": {
 		"@sveltejs/vite-plugin-svelte": "^2.4.2",
+		"@types/webextension-polyfill": "^0.10.1",
 		"svelte": "^4.0.1",
 		"vite": "^4.3.9",
 		"vite-plugin-web-extension": "^3.1.0",
-		"webextension-polyfill": "^0.10.0"
+		"webextension-polyfill": "^0.10.0",
+		"zip-a-folder": "^2.0.0"
 	},
 	"dependencies": {
 		"@steeze-ui/heroicons": "^2.2.3",

@@ -47,19 +47,34 @@ body {
 	font-family: var(--font-stack);
 }
 
+h1 {
+	font-size: 1em;
+}
+
 h1,
 p {
 	margin: 0;
-}
-
-h1 {
-	font-size: 1.5em;
 }
 
 form {
 	display: flex;
 	flex-direction: column;
 	gap: var(--gap);
+	width: 100%;
+}
+
+header {
+	font-size: 1.5rem;
+	display: flex;
+	align-items: center;
+	gap: var(--gap);
+}
+
+.icon {
+	display: inline-block;
+	height: 2em;
+	width: 2em;
+	filter: drop-shadow(0 1px 1px var(--color-text-secondary));
 }
 
 .box {
@@ -129,6 +144,7 @@ form {
 	justify-content: center;
 	gap: var(--gap);
 	box-shadow: var(--box-shadow);
+	transition: all 0.33s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .button:hover {
@@ -136,7 +152,7 @@ form {
 }
 
 .button:active {
-	margin-top: 2px;
+	transform: scale(0.95);
 }
 
 .button span {
@@ -144,12 +160,13 @@ form {
 }
 
 .button-primary {
-	background-color: var(--color-primary);
-	color: var(--color-box);
+	color: var(--color-primary);
 }
 .button-warning {
-	background-color: var(--color-warning);
-	color: var(--color-box);
+	color: var(--color-warning);
+}
+.button-danger {
+	color: var(--color-red);
 }
 
 .spin {
