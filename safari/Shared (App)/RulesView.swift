@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SafariServices.SFSafariApplication
+import SafariServices.SFSafariExtensionManager
 
 struct RulesView: View {
     var body: some View {
@@ -18,3 +20,12 @@ struct RulesView_Previews: PreviewProvider {
         RulesView()
     }
 }
+
+func sendMessageToExtension() {
+    let messageName = "Hello from App"
+    let messageInfo = ["AdditionalInformation":"Goes Here"]
+    SFSafariApplication.dispatchMessage(withName: messageName, toExtensionWithIdentifier: extensionBundleIdentifier, userInfo: messageInfo) { error in
+        debugPrint("Message attempted. Error info: \(String.init(describing: error))")
+    }
+}
+

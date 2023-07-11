@@ -6,24 +6,11 @@ struct ContentView: View {
         NavigationView {
             List {
                 Section {
-                    Label {
-                        Text("Banners dealt with")
-                        Spacer()
-                        Text("35")
-                    } icon: {
-                        Image(systemName: "checkmark.shield.fill")
-                            .foregroundColor(.green)
-                            .imageScale(.large)
+                    VStack {
+                        Text("42").font(.title).bold()
+                        Text("cookie banners closed").font(.smallCaps(.body)()).foregroundColor(.gray)
                     }
-                    Label {
-                        Text("Banners untouched")
-                        Spacer()
-                        Text("35")
-                    } icon: {
-                        Image(systemName: "xmark.shield.fill")
-                            .foregroundColor(.red)
-                            .imageScale(.large)
-                    }
+                    .frame(maxWidth: .infinity)
                 }
                 Section {
                     NavigationLink(destination: SettingsView()) {
@@ -86,7 +73,6 @@ struct ContentView: View {
             }.navigationTitle(
                 Text("Cocoma")
             )
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

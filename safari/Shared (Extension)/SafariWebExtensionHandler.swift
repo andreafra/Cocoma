@@ -13,14 +13,17 @@ let SFExtensionMessageKey = "message"
 class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
     func beginRequest(with context: NSExtensionContext) {
-        let item = context.inputItems[0] as! NSExtensionItem
-        let message = item.userInfo?[SFExtensionMessageKey]
-        os_log(.default, "Received message from browser.runtime.sendNativeMessage: %@", message as! CVarArg)
+            guard let item = context.inputItems.first as? NSExtensionItem,
+                  let userInfo = item.userInfo as? [String: Any],
+                  let message = userInfo[SFExtensionMessageKey]
+            else {
+                context.completeRequest(returningItems: nil, completionHandler: nil)
+                return
+            }
 
-        let response = NSExtensionItem()
-        response.userInfo = [ SFExtensionMessageKey: [ "Response to": message ] ]
-
-        context.completeRequest(returningItems: [response], completionHandler: nil)
+            let response = NSExtensionItem()
+            response.userInfo = [ SFExtensionMessageKey: [ "Response to": message ] ]
+                
+            context.completeRequest(returningItems: [response], completionHandler: nil)
     }
-
 }
