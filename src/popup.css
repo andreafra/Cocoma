@@ -47,8 +47,19 @@ body {
 	font-family: var(--font-stack);
 }
 
+.title {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	justify-content: center;
+}
+
 h1 {
 	font-size: 1em;
+}
+
+small {
+	font-size: 0.6em;
 }
 
 h1,

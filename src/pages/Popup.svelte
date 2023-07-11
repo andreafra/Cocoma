@@ -80,7 +80,10 @@
 
 <header>
 	<img class="icon" src="/icon.svg" alt="logo" />
-	<h1>Cookie Consent<br />Manager</h1>
+	<div class="title">
+		<h1>Cocoma</h1>
+		<small>Cookie Consent Manager</small>
+	</div>
 </header>
 <div class="box">
 	<div class="box-item">

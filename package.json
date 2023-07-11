@@ -1,5 +1,6 @@
 {
-	"name": "cookie-consent",
+	"name": "cocoma-cookie-consent-manager",
+	"description": "A web extension to automatically apply user cookie consent choice.",
 	"private": true,
 	"version": "1.0.0",
 	"type": "module",

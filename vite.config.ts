@@ -7,10 +7,10 @@ function generateManifest() {
   const manifest = readJsonFile("src/manifest.json");
   const pkg = readJsonFile("package.json");
   return {
-    name: pkg.name,
+    ...manifest,
     description: pkg.description,
     version: pkg.version,
-    ...manifest,
+    name: "Cocoma - Cookie Consent Manager",
   };
 }
 
