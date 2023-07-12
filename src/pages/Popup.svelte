@@ -84,10 +84,10 @@
 </script>
 
 <header>
-	<img class="icon" src="/icon-128.png" alt="logo" />
+	<img class="icon" src="/icon/icon-masked-128.png" alt="logo" />
 	<div class="title">
 		<h1>Cocoma</h1>
-		<small>Cookie Consent Manager</small>
+		<small><b>Co</b>okie <b>Co</b>nsent <b>Ma</b>nager</small>
 	</div>
 </header>
 <div class="box">
