@@ -38,7 +38,7 @@ struct HowToEnableView: View {
                 .frame(maxWidth: .infinity)
                 VStack {
                     Image(systemName: "3.circle.fill").padding(.vertical, 4.0).imageScale(.large).foregroundColor(.gray)
-                    Text("You can easily access the extension settings from Safari! Just open the website settings menu, and tap on the extension!")
+                    Text("You can easily access the extension settings from Safari! Just open the website settings menu, tap on the extension and configure the app!")
                     GetImage("HowTo_5").padding(.bottom, 8.0)
                  }
                 .frame(maxWidth: .infinity)

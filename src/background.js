@@ -1,12 +1,16 @@
 import browser from "webextension-polyfill"
 import cookieRules from "../public/cookie-banner-rules-list.json"
-import { getHostname, updateRules } from "./utils"
+import { getHostname, shareStatsWithNativeApp, updateRules } from "./utils"
 
 const defaultOptions = {
 	defaultConsent: false,
 	websitesConsent: {},
 	allowClick: true,
 	allowCookieInjection: true,
+}
+
+const defaultStats = {
+	bannersClosed: 0,
 }
 
 const defaultCustomRules = {
@@ -17,11 +21,18 @@ const defaultCustomRules = {
 browser.runtime.onInstalled.addListener(async (details) => {
 	console.log("Extension installed:", details)
 
-	const data = browser.storage.sync.get("options")
+	const data = await browser.storage.sync.get(["options", "stats"])
+
 	if (!data.options) {
-		console.log("Initializing default settings")
+		console.log("Initializing settings...")
 		browser.storage.sync.set({ options: defaultOptions })
 	}
+
+	if (!data.stats) {
+		console.log("Initializing stats...")
+		browser.storage.sync.set({ stats: defaultStats })
+	}
+
 	console.log("Initializing default local rules")
 	browser.storage.local.set({ customRules: defaultCustomRules })
 })
@@ -30,6 +41,7 @@ browser.runtime.onInstalled.addListener(async (details) => {
 // Set an expiration date that is checked periodically, on expire fetch again
 // Alternatively, the user can fetch again the data.
 
+// @ts-ignore
 browser.runtime.onMessage.addListener(messageHandler)
 
 function messageHandler(request, sender, sendResponse) {
@@ -40,9 +52,11 @@ function messageHandler(request, sender, sendResponse) {
 				const rules = getCookieData(url)
 				console.log("Rules", rules)
 				sendResponse(rules)
+				break
 			case "get_consent":
 				const consentPrefs = await getConsentPrefs(url)
 				sendResponse(consentPrefs)
+				break
 			case "clear_data":
 				console.log("Clearing browsing data and reloading...")
 				const cookies = await browser.cookies.getAll({})
@@ -53,6 +67,11 @@ function messageHandler(request, sender, sendResponse) {
 					})
 				}
 				sendResponse()
+				break
+			case "share_stats":
+				shareStatsWithNativeApp()
+				sendResponse()
+				break
 			default:
 				console.log("Unsupported message: ", request)
 		}

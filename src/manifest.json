@@ -29,7 +29,7 @@
 		}
 	],
 	"{{chrome}}.host_permissions": ["*://*/*"],
-	"permissions": ["tabs", "storage", "cookies", "*://*/*"],
+	"permissions": ["tabs", "storage", "cookies", "nativeMessaging", "*://*/*"],
 	"browser_specific_settings": {
 		"gecko": {
 			"id": "addon@example.com",

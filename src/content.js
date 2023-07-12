@@ -1,5 +1,6 @@
 import browser from "webextension-polyfill"
 import Cookies from "js-cookie"
+import { updateStatsWithSuccess } from "./utils"
 
 async function main() {
 	// On page load, send the current URL to the background worker and
@@ -14,19 +15,21 @@ async function main() {
 	if (!checkForExistingCookies(rules)) {
 		startCookieManager(rules)
 	} else {
-		console.log(`Found matching cookie rules in ${elapsedTime} ms`)
+		console.log(
+			`Found matching cookie rules in ${elapsedTime} ms. Terminating...`
+		)
 	}
 }
 
 function checkForExistingCookies(rules) {
-	for (const rule in rules) {
+	for (const rule of rules) {
 		if (!rule.cookies) return false
 		if (rule.cookies.optIn)
-			return rule.cookes.optIn.some(
+			return rule.cookies.optIn.some(
 				({ name, value }) => Cookies.get(name) === value
 			)
 		if (rule.cookies.optOut)
-			return rule.cookes.optOut.some(
+			return rule.cookies.optOut.some(
 				({ name, value }) => Cookies.get(name) === value
 			)
 	}
@@ -45,7 +48,7 @@ function startCookieManager(rules) {
 		}
 		if (currentTry >= maxTries) {
 			clearInterval(loop)
-			console.warn("Failed to get presences.")
+			console.warn("Failed to detect known cookie bannes.")
 			return
 		}
 		currentTry++
@@ -79,10 +82,8 @@ async function handleCookieConsent(rules) {
 		console.log(`Using rule id=${rule.id}`)
 		if (allowClick && rule.click) {
 			clickConsentButton(rule, consent)
-			console.log(`Clicked consent button: optIn=${consent}`)
 		} else if (allowCookieInjection && rule.cookies) {
 			setConsentCookies(rule, consent)
-			console.log(`Set consent cookie: optIn=${consent}`)
 		} else {
 			console.log(
 				"Failed to click the consent button and set the cookies."
@@ -96,6 +97,8 @@ async function handleCookieConsent(rules) {
 		const consentButton = document.querySelector(rule.click[consentChoice])
 		if (consentButton) {
 			consentButton.click()
+			updateStatsWithSuccess()
+			console.log(`Clicked ${consentChoice} button.`)
 		} else {
 			console.error(`Failed to click ${consentChoice} button.`)
 		}
@@ -105,17 +108,19 @@ async function handleCookieConsent(rules) {
 		console.log("Trying to set consent cookies.")
 		const cookies = consent ? rule.cookies?.optIn : rule.cookies?.optOut
 		if (cookies) {
-			for (const cookie in cookies) {
+			for (const cookie of cookies) {
 				Cookies.set(cookie.name, cookie.value)
 				console.log(
-					`Setting cookie ${cookie.name} to value ${cookie.value}`
+					`Setting cookie ${cookie.name} to value=${cookie.value}`
 				)
 			}
 		}
 	}
 }
 
-browser.storage.local.onChanged.addListener(async (change) => {
+// Custom rules handling
+
+browser.storage.local.onChanged.addListener(async (_) => {
 	const { customRules } = await browser.storage.local.get("customRules")
 	if (customRules.isPickingChoice) {
 		console.log("Entering picking mode...")

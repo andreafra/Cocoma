@@ -1,36 +1,20 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    @AppStorage("banners_closed", store: UserDefaults(suiteName: "group.com.andreafranchini.CookieConsentManager"))
+    var bannersClosed: Int = 0
+    
+    let HELP_URL = URL(string: "https://andreafra.notion.site/Cookie-Consent-Manager-7f7be95ee2c340e29b1b8c4d4e8e4d7c")!
+    
     var body: some View {
         NavigationView {
             List {
                 Section {
                     VStack {
-                        Text("42").font(.title).bold()
+                        Text("\(bannersClosed)").font(.title).bold()
                         Text("cookie banners closed").font(.smallCaps(.body)()).foregroundColor(.gray)
                     }
                     .frame(maxWidth: .infinity)
-                }
-                Section {
-                    NavigationLink(destination: SettingsView()) {
-                        Label {
-                            Text("Settings")
-                        } icon: {
-                            Image(systemName: "switch.2")
-                                .foregroundColor(.indigo)
-                                .imageScale(.large)
-                        }
-                    }
-                    NavigationLink(destination: RulesView()){
-                        Label {
-                            Text("Rules")
-                        } icon: {
-                            Image(systemName: "scroll.fill")
-                                .foregroundColor(.mint)
-                                .imageScale(.large)
-                        }
-                    }
                 }
                 Section {
                     NavigationLink(destination: HowToEnableView()) {
@@ -42,20 +26,11 @@ struct ContentView: View {
                                 .imageScale(.large)
                         }
                     }
-                    NavigationLink(destination: StatisticsView()) {
+                    NavigationLink(destination: ContributingView()) {
                         Label {
-                            Text("Statistics")
+                            Text("Contributing")
                         } icon: {
-                            Image(systemName: "chart.bar.fill")
-                                .foregroundColor(.orange)
-                                .imageScale(.large)
-                        }
-                    }
-                    NavigationLink(destination: TipJarView()) {
-                        Label {
-                            Text("Tip Jar")
-                        } icon: {
-                            Image(systemName: "dollarsign.square.fill")
+                            Image(systemName: "star.bubble.fill")
                                 .foregroundColor(.yellow)
                                 .imageScale(.large)
                         }
@@ -68,6 +43,19 @@ struct ContentView: View {
                                 .foregroundColor(.blue)
                                 .imageScale(.large)
                         }
+                    }
+                }
+                Section {
+                    Link(destination: HELP_URL) {
+                        Label {
+                            Text("Help")
+                            Spacer()
+                            Image(systemName: "link")
+                        } icon: {
+                            Image(systemName: "questionmark.bubble.fill")
+                                .foregroundColor(.purple)
+                                .imageScale(.large)
+                        }.foregroundColor(.black)
                     }
                 }
             }.navigationTitle(

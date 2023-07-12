@@ -8,7 +8,7 @@
 
 	let optionsForm: HTMLFormElement
 	let websiteUrl: string = "<none>"
-
+	let bannersClosed: number = 0
 	let lastRuleUpdateDate = new Date()
 
 	// Immediately persist options changes
@@ -57,10 +57,15 @@
 	}
 
 	onMount(async () => {
-		const { options } = await browser.storage.sync.get("options")
+		const { options, stats } = await browser.storage.sync.get([
+			"options",
+			"stats",
+		])
 		const hostname = await getHostname()
 
 		websiteUrl = hostname || "None"
+
+		bannersClosed = stats.bannersClosed
 
 		optionsForm.defaultConsent.checked = Boolean(options.defaultConsent)
 		optionsForm.websiteConsent.checked = Boolean(
@@ -79,7 +84,7 @@
 </script>
 
 <header>
-	<img class="icon" src="/icon.svg" alt="logo" />
+	<img class="icon" src="/icon-128.png" alt="logo" />
 	<div class="title">
 		<h1>Cocoma</h1>
 		<small>Cookie Consent Manager</small>
@@ -87,7 +92,11 @@
 </header>
 <div class="box">
 	<div class="box-item">
-		<span>Current website:</span>
+		<span>Banners closed</span>
+		<h2 class="counter">{bannersClosed}</h2>
+	</div>
+	<div class="box-item">
+		<span>Current website</span>
 		<code>{websiteUrl}</code>
 	</div>
 </div>
@@ -151,14 +160,17 @@
 >
 	Update rules
 </button>
-<p class="caption">Not working? Try selecting the button manually.</p>
-<button
-	id="pick-elem"
-	class="button button-warning"
-	on:click={handleStartPickChoice}
->
-	Select choice
-</button>
+{#if false}
+	<p class="caption">Not working? Try selecting the button manually.</p>
+	<button
+		id="pick-elem"
+		class="button button-warning"
+		on:click={handleStartPickChoice}
+	>
+		Select choice
+	</button>
+{/if}
+
 <p class="caption">
 	{#await lastRuleUpdateDate}
 		Downloading rules... <Icon

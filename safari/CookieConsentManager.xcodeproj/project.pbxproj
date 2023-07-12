@@ -13,16 +13,10 @@
 		650826792A5D4D6E0014962E /* CookieConsentManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650826772A5D4D6E0014962E /* CookieConsentManagerApp.swift */; };
 		6508267C2A5D71620014962E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6508267B2A5D71620014962E /* AboutView.swift */; };
 		6508267D2A5D71620014962E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6508267B2A5D71620014962E /* AboutView.swift */; };
-		6508267F2A5D71D50014962E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6508267E2A5D71D50014962E /* SettingsView.swift */; };
-		650826802A5D71D50014962E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6508267E2A5D71D50014962E /* SettingsView.swift */; };
-		650826822A5D71E80014962E /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650826812A5D71E80014962E /* RulesView.swift */; };
-		650826832A5D71E80014962E /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650826812A5D71E80014962E /* RulesView.swift */; };
 		650826852A5D72460014962E /* HowToEnableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650826842A5D72460014962E /* HowToEnableView.swift */; };
 		650826862A5D72460014962E /* HowToEnableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650826842A5D72460014962E /* HowToEnableView.swift */; };
-		650826882A5D72AD0014962E /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650826872A5D72AD0014962E /* StatisticsView.swift */; };
-		650826892A5D72AD0014962E /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650826872A5D72AD0014962E /* StatisticsView.swift */; };
-		6508268B2A5D72B80014962E /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6508268A2A5D72B80014962E /* TipJarView.swift */; };
-		6508268C2A5D72B80014962E /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6508268A2A5D72B80014962E /* TipJarView.swift */; };
+		6508268B2A5D72B80014962E /* ContributingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6508268A2A5D72B80014962E /* ContributingView.swift */; };
+		6508268C2A5D72B80014962E /* ContributingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6508268A2A5D72B80014962E /* ContributingView.swift */; };
 		6565FB1E2A5D3D9A00C81E04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6565FB1C2A5D3D9A00C81E04 /* LaunchScreen.storyboard */; };
 		6565FB352A5D3D9A00C81E04 /* CookieConsentManager Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6565FB342A5D3D9A00C81E04 /* CookieConsentManager Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6565FB3F2A5D3D9A00C81E04 /* CookieConsentManager Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6565FB3E2A5D3D9A00C81E04 /* CookieConsentManager Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -93,11 +87,10 @@
 		650826772A5D4D6E0014962E /* CookieConsentManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieConsentManagerApp.swift; sourceTree = "<group>"; };
 		6508267A2A5D511F0014962E /* CookieConsentManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieConsentManagerApp.swift; sourceTree = "<group>"; };
 		6508267B2A5D71620014962E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		6508267E2A5D71D50014962E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		650826812A5D71E80014962E /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		650826842A5D72460014962E /* HowToEnableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToEnableView.swift; sourceTree = "<group>"; };
-		650826872A5D72AD0014962E /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
-		6508268A2A5D72B80014962E /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
+		6508268A2A5D72B80014962E /* ContributingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributingView.swift; sourceTree = "<group>"; };
+		650826902A5EB6520014962E /* CookieConsentManager (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CookieConsentManager (iOS).entitlements"; sourceTree = "<group>"; };
+		650826912A5ED9C40014962E /* CookieConsentManager Extension (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CookieConsentManager Extension (iOS).entitlements"; sourceTree = "<group>"; };
 		6565FB0E2A5D3D9A00C81E04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6565FB102A5D3D9A00C81E04 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
 		6565FB152A5D3D9A00C81E04 /* CookieConsentManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookieConsentManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +148,8 @@
 		6565FB012A5D3D9900C81E04 = {
 			isa = PBXGroup;
 			children = (
+				650826912A5ED9C40014962E /* CookieConsentManager Extension (iOS).entitlements */,
+				650826902A5EB6520014962E /* CookieConsentManager (iOS).entitlements */,
 				6565FB062A5D3D9900C81E04 /* Shared (App) */,
 				6565FB0F2A5D3D9A00C81E04 /* Shared (Extension) */,
 				6565FB172A5D3D9A00C81E04 /* iOS (App) */,
@@ -170,11 +165,8 @@
 			children = (
 				6565FB0E2A5D3D9A00C81E04 /* Assets.xcassets */,
 				650826592A5D47DF0014962E /* ContentView.swift */,
-				6508267E2A5D71D50014962E /* SettingsView.swift */,
-				650826812A5D71E80014962E /* RulesView.swift */,
 				650826842A5D72460014962E /* HowToEnableView.swift */,
-				650826872A5D72AD0014962E /* StatisticsView.swift */,
-				6508268A2A5D72B80014962E /* TipJarView.swift */,
+				6508268A2A5D72B80014962E /* ContributingView.swift */,
 				6508267B2A5D71620014962E /* AboutView.swift */,
 			);
 			path = "Shared (App)";
@@ -425,11 +417,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6508268B2A5D72B80014962E /* TipJarView.swift in Sources */,
+				6508268B2A5D72B80014962E /* ContributingView.swift in Sources */,
 				6508265A2A5D47DF0014962E /* ContentView.swift in Sources */,
-				650826822A5D71E80014962E /* RulesView.swift in Sources */,
-				6508267F2A5D71D50014962E /* SettingsView.swift in Sources */,
-				650826882A5D72AD0014962E /* StatisticsView.swift in Sources */,
 				6508267C2A5D71620014962E /* AboutView.swift in Sources */,
 				650826782A5D4D6E0014962E /* CookieConsentManagerApp.swift in Sources */,
 				650826852A5D72460014962E /* HowToEnableView.swift in Sources */,
@@ -440,11 +429,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6508268C2A5D72B80014962E /* TipJarView.swift in Sources */,
+				6508268C2A5D72B80014962E /* ContributingView.swift in Sources */,
 				650826792A5D4D6E0014962E /* CookieConsentManagerApp.swift in Sources */,
-				650826832A5D71E80014962E /* RulesView.swift in Sources */,
-				650826802A5D71D50014962E /* SettingsView.swift in Sources */,
-				650826892A5D72AD0014962E /* StatisticsView.swift in Sources */,
 				6508267D2A5D71620014962E /* AboutView.swift in Sources */,
 				6508265B2A5D47DF0014962E /* ContentView.swift in Sources */,
 				650826862A5D72460014962E /* HowToEnableView.swift in Sources */,
@@ -606,6 +592,7 @@
 		6565FB562A5D3D9A00C81E04 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "CookieConsentManager Extension (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WT9MGRS7X4;
@@ -637,6 +624,7 @@
 		6565FB572A5D3D9A00C81E04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "CookieConsentManager Extension (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WT9MGRS7X4;
@@ -672,12 +660,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "CookieConsentManager (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WT9MGRS7X4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (App)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Cookie Consent Manager";
+				INFOPLIST_KEY_CFBundleDisplayName = Cocoma;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
@@ -710,12 +699,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "CookieConsentManager (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WT9MGRS7X4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (App)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Cookie Consent Manager";
+				INFOPLIST_KEY_CFBundleDisplayName = Cocoma;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;

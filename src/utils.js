@@ -17,6 +17,25 @@ export async function getHostname() {
 	return url.hostname
 }
 
+export async function updateStatsWithSuccess() {
+	const { stats } = await browser.storage.sync.get("stats")
+	stats.bannersClosed += 1
+	browser.storage.sync.set({ stats })
+	browser.runtime.sendMessage({ type: "share_stats" })
+}
+
+export async function shareStatsWithNativeApp() {
+	const { stats } = await browser.storage.sync.get("stats")
+	console.log("Sharing stats...")
+	const res = await browser.runtime.sendNativeMessage("_", stats)
+	console.log(
+		res["success"]
+			? "Successfully shared stats with app."
+			: "Failed to share stats with app."
+	)
+	console.log(res)
+}
+
 const MOZILLA_GITHUB_RULES =
 	"https://raw.githubusercontent.com/mozilla/cookie-banner-rules-list/main/cookie-banner-rules-list.json"
 
