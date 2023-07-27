@@ -1,11 +1,12 @@
 {
   "images" : [
     {
+      "filename" : "icon-masked-512 1.png",
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "icon-128.png"
+      "scale" : "1x"
     },
     {
+      "filename" : "icon-masked-512@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -15,7 +16,7 @@
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

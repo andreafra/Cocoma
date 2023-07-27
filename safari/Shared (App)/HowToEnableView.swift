@@ -30,16 +30,21 @@ struct HowToEnableView: View {
                     Text("Allow the extension for every website to have the best experience.")
                     GetImage("HowTo_2")
                         .padding(.bottom, 8.0)
+                        .aspectRatio(contentMode: .fit)
                     Text("Under the 'Permission' section, select 'All Websites', and choose the option 'Allow'.")
                     GetImage("HowTo_3")
+                        .aspectRatio(contentMode: .fit)
                     GetImage("HowTo_4")
                         .padding(.bottom, 8.0)
+                        .aspectRatio(contentMode: .fit)
                  }
                 .frame(maxWidth: .infinity)
                 VStack {
                     Image(systemName: "3.circle.fill").padding(.vertical, 4.0).imageScale(.large).foregroundColor(.gray)
                     Text("You can easily access the extension settings from Safari! Just open the website settings menu, tap on the extension and configure the app!")
-                    GetImage("HowTo_5").padding(.bottom, 8.0)
+                    GetImage("HowTo_5")
+                        .padding(.bottom, 8.0)
+                        .aspectRatio(contentMode: .fit)
                  }
                 .frame(maxWidth: .infinity)
             }

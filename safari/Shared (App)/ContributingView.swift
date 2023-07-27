@@ -46,7 +46,7 @@ struct ContributingView: View {
                 }
             }
         }
-            .navigationTitle("Tip Jar")
+            .navigationTitle("Contributing")
     }
 }
 
