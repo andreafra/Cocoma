@@ -30,6 +30,7 @@ dist-ssr
 
 ## User settings
 xcuserdata/
+safari/CookieConsentManager.xcodeproj/project.xcworkspace/xcuserdata/
 
 ## Xcode 8 and earlier
 *.xcscmblueprint
