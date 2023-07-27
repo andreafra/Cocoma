@@ -1,10 +1,12 @@
 # ![Logo](public/icon/icon-masked-96.png) Cocoma (Cookie Consent Manager)
+
 A Web Extension to automate opt-out (or opt-in) consent to cookies.
 
 This repository hosts the source code of Cocoma, a Cookie Consent Manager for:
-- Chromium-based browsers (Google Chrome, Edge...)
-- Firefox (soon unnecessary, as it will be a built-in feature)
-- Safari (iOS and macOS)
+
+-   Chromium-based browsers (Google Chrome, Edge...)
+-   Firefox (soon unnecessary, as it will be a built-in feature)
+-   Safari (iOS and macOS)
 
 Under the hood it leverages [Mozilla's Cookie Banner Rules List](https://github.com/mozilla/cookie-banner-rules-list)
 to handle known cookie banners.
@@ -22,9 +24,10 @@ as _Cocoma_ depends on external lists.
 
 ## Help
 
-See the [help page](https://andreafra.notion.site/Cookie-Consent-Manager-7f7be95ee2c340e29b1b8c4d4e8e4d7c)
+See the [help page](https://andreafra.notion.site/Cookie-Consent-Manager-7f7be95ee2c340e29b1b8c4d4e8e4d7c).
 
 ## Why
+
 Mostly because I wanted to experiment with Web Extensions and iOS/Safari, and I wasn't particularly busy.
 
 ## Doesn't [Hush](https://oblador.github.io/hush/) do the same thing?
@@ -32,3 +35,13 @@ Mostly because I wanted to experiment with Web Extensions and iOS/Safari, and I 
 Technically not, as Hush is a content blocker that blocks/hides the cookie banners, while this extension mimics the new Firefox,
 which will actually _click_ on the Opt-In/Accept All or Opt-Out/Reject All buttons, or alternatively will set known cookies to
 set your choice.
+
+# Develop
+
+This project uses `pnpm` as a package manager, so use `pnpm install` to download all the dependencies.
+
+To run it, you can see the available commands with `pnpm run`.
+
+To build the extension, you need to use `pnpm run build:chrome` or `pnpm run build:firefox`.
+
+You can build the safari extension by opening the Xcode project inside the `/safari` directory. You need to **build** the extension first (use the `pnpm run build` command), if you use `pnpm run dev` it won't work.
